@@ -1,1 +1,1 @@
-Calculator available under: https://github.com/95SebastianJakubowski/Earth-Taygetan-Calculator.git
+Calculator available under: https://95sebastianjakubowski.github.io/Earth-Taygetan-Calculator/
