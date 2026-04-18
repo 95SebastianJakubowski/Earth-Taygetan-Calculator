@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Earth/Taygetan Calculator</title>
+
+<style>
+canvas {
+  display: block;
+  margin: 0 auto 10px;
+}
+.canvas-wrapper {
+  width: 100%;
+  max-height: 200px;  
+  overflow-y: auto;  
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: #141414;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+}
+
+.calculator {
+  width: fit-content;  
+  min-width: 350px;     
+  max-width: none;    
+  padding: 10px;
+}
+
+.display {
+  color: #e7e7e7;
+  font-size: 50px;
+  text-align: right;
+  padding: 20px;
+  min-height: 60px;
+  word-wrap: break-word;
+}
+
+.sub-display {
+  color: #e7e7e7;
+  text-align: left;
+  padding: 0 20px 10px;
+
+  /* font-size: 18px;  */
+  font-size: 25px; 
+  font-weight: 600;
+  font-family: monospace;
+  line-height: 1.4;
+}
+
+.sub-display b {
+  color: #ffa500;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 20px;
+}
+
+button {
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.btn-dark { background: #525252; color: #e7e7e7; }
+.btn-light { background: #a5a5a5; }
+.btn-orange { background: #ffa500; color: #141414; }
+
+button:active {
+  opacity: 0.7;
+}
+.active-base {
+  box-shadow: 0 0 0 6px #ffa500;
+  transform: scale(1.03);
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+  <div id="display" class="display">0</div>
+  <div id="subDisplay" class="sub-display"></div>
+
+  <div id="subDisplayT" class="sub-display"></div>
+
+  <div class="canvas-wrapper">
+    <canvas id="canvas" width="350" height="120"></canvas>
+  </div>
+
+  <div class="buttons">
+
+    <!-- TOP -->
+    <button class="btn-orange" onclick="convert()">=</button>
+    <button class="btn-light" onclick="clearInput()">C</button>
+    <button class="btn-light" onclick="removeLast()">⌫</button>
+    <button class="btn-orange" onclick="appendSymbol('+')">+</button>
+
+    <!-- ROW -->
+    <button class="btn-dark" onclick="appendSymbol('7')">7</button>
+    <button class="btn-dark" onclick="appendSymbol('8')">8</button>
+    <button class="btn-dark" onclick="appendSymbol('9')">9</button>
+    <button class="btn-orange" onclick="appendSymbol('-')">−</button>
+
+    <button class="btn-dark" onclick="appendSymbol('4')">4</button>
+    <button class="btn-dark" onclick="appendSymbol('5')">5</button>
+    <button class="btn-dark" onclick="appendSymbol('6')">6</button>
+    <button id="btn10" class="btn-light" onclick="setBase(10)">decimal</button>
+
+    <button class="btn-dark" onclick="appendSymbol('1')">1</button>
+    <button class="btn-dark" onclick="appendSymbol('2')">2</button>
+    <button class="btn-dark" onclick="appendSymbol('3')">3</button>
+    <button id="btn12" class="btn-light" onclick="setBase(12)">duodecimal</button>
+
+    <button class="btn-dark" onclick="appendSymbol('0')">0</button>
+    <button class="btn-dark" onclick="appendSymbol('A')">A</button>
+    <button class="btn-dark" onclick="appendSymbol('B')">B</button>
+
+  </div>
+
+
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
